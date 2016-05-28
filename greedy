@@ -1,0 +1,48 @@
+//Pset1 Greedy
+//Program that outputs the minimum amount of coins needed to be used to return change to a customer
+
+#include <stdio.h>
+#include <cs50.h>
+#include <math.h>
+
+int main(void)
+{
+    
+//Declare variables needed for program
+
+    float change = 0;
+    int cents = 0;
+   
+    int quarter_ctr, dime_ctr, nickel_ctr, penny_ctr;
+    int quarter, dime, nickel, penny;
+    int total;
+
+//Get amount from user and validate
+
+        do 
+        {
+            printf("O hai!How much change is owed? (i.e. 2.32)");
+            change = GetFloat();
+        }   
+        while (change <= 0);
+    
+        cents = round (change * 100);
+            
+
+        for (quarter_ctr = 0, quarter = 25 ; cents >= quarter; quarter_ctr++)
+                cents = cents - quarter;
+                
+        for (dime_ctr = 0, dime = 10 ; cents >= dime; dime_ctr++)
+            cents = cents - dime;
+            
+        for (nickel_ctr = 0, nickel = 5 ; cents >= nickel; nickel_ctr++)
+            cents = cents - nickel;
+            
+        for (penny_ctr = 0, penny = 1 ; cents >= penny; penny_ctr++)
+            cents = cents - penny;
+            
+        printf("%i\n", total = quarter_ctr + dime_ctr + nickel_ctr + penny_ctr);
+        
+        
+        return 0;
+}
